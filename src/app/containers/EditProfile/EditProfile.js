@@ -1,7 +1,7 @@
 import React from 'react';
 
 const EditProfile = () => (
-  <div>
+  <div className="container">
     Edit Profile Page
   </div>
 );
