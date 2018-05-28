@@ -1,0 +1,131 @@
+$red-accent2: #FF5454;
+$red-accent2-hover: #ED4848;
+$bg-main: #F8F8FA;
+$white: #FFFFFF;
+$grey: #424242;
+$black: #424242;
+
+.link-forgot-password {
+  font-size: 20px;
+  text-align: center;
+}
+
+a {
+  text-decoration: underline;
+  color: $black;
+  font-family: "Work Sans", sans-serif;
+}
+
+input {
+  text-align: left;
+}
+
+.logo {
+  margin: 40px;
+  text-align: center;
+  .blink-logo {
+    font-size: 30px;
+    font-family: cursive;
+  }
+}
+
+.clear {
+  clear: both;
+}
+.wrapper-login {
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .login {
+    width: 100%;
+    height: 100vh;
+    background-color: $bg-main;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+    .form-wrapper {
+      box-sizing: inherit;
+      width: 60rem;
+      height: auto;
+      background-color: $white;
+      box-shadow: 0 0 7.5rem 0 rgba(0, 0, 0, 0.2);
+      border-radius: 0.5rem;
+      padding: 2rem 4rem;
+
+      .title-login {
+        font-size: 3.6rem;
+        color: rgb(24, 27, 39);
+        text-align: center;
+        display: block;
+      }
+
+      .container {
+        width: 100%;
+
+        .form-group {
+          width: 100%;
+          height: auto;
+          margin: 2.4rem auto 0;
+        }
+        .form-group label {
+          display: block;
+          margin: 0 0 15px 0;
+        }
+
+        .form-group label > span{
+          width: 100px;
+          font-weight: bold;
+          font-size: 2rem;
+          float: left;
+          padding-top: 8px;
+          padding-right: 5px;
+        }
+
+        .form-group span.required{
+          color: $red-accent2;
+        }
+
+        .form-group input.input-field {
+          width: 100%;
+          font-size: 1.7rem;
+          border: 1px solid #C2C2C2;
+          border-radius: 3px;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          padding: 7px;
+          outline: none;
+        }
+        .form-group input.input-field:focus {
+          border: 1px solid $grey;
+        }
+      }
+
+      .btn-login {
+        width: 100%;
+        background: $red-accent2;
+        color: $white;
+        text-transform: uppercase;
+        padding: 1.2rem;
+        margin: 2rem 0;
+        border: 0.1rem solid $red-accent2;
+        border-radius: 10rem;
+        font-size: 2rem;
+        font-family: 'Work Sans', sans-serif;
+        text-align: center;
+        outline: none;
+      }
+      .btn-login:hover {
+        background: $red-accent2-hover;
+        border-color: $red-accent2-hover;
+        cursor: pointer;
+      }
+    }
+  }
+
+}
