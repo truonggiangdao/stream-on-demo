@@ -1,8 +1,13 @@
 import axios from 'axios';
 
+const END_POINT_KEYS = {
+  AUTH: 'AUTH',
+  USER_PROFILE: 'USER_PROFILE',
+};
+
 const END_POINTS = {
   AUTH: 'user/auth',
-  UPDATE_PROFILE: 'users/{id}',
+  USER_PROFILE: 'users/{id}',
 };
 
 const URL_GETTER = {
@@ -31,8 +36,18 @@ const URL_GETTER = {
   }
 };
 
-export { END_POINTS, URL_GETTER };
+export {
+  END_POINTS,
+  END_POINT_KEYS
+};
+
+export const parseAPIUrl = URL_GETTER.get;
 
 export default axios.create({
-  baseURL: `https://api-stg.bliink.io/v1/`
+  baseURL: `https://api-stg.bliink.io/v1/`,
+  headers: {
+    post: {
+      'content-type': 'application/x-www-form-urlencoded'
+    }
+  }
 });

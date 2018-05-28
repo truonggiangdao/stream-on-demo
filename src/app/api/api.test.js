@@ -1,15 +1,15 @@
-import {URL_GETTER} from './api';
+import {parseAPIUrl, END_POINT_KEYS} from './api';
 
 it('Can get API End Point correcty', () => {
-  if (!URL_GETTER.get || URL_GETTER.get.constructor !== Function) {
-    throw new Error('URL_GETTER.get() is not defined');
+  if (!parseAPIUrl || parseAPIUrl.constructor !== Function) {
+    throw new Error('parseAPIUrl is not defined');
   }
 
   const params = {id: 'abc'};
-  const outPut = URL_GETTER.get('UPDATE_PROFILE', params);
+  const outPut = parseAPIUrl(END_POINT_KEYS.USER_PROFILE, params);
   const expectedOutPut = 'users/abc';
 
   if (outPut !== expectedOutPut) {
-    throw new Error(`URL_GETTER.get() is not working correctly. Output: ${outPut}. Expected Output: ${expectedOutPut}.`);
+    throw new Error(`parseAPIUrl() is not working correctly. Output: ${outPut}. Expected Output: ${expectedOutPut}.`);
   }
 });
