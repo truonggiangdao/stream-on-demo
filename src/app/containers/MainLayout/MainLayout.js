@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import Home from '../Home';
 import EditProfile from '../EditProfile';
-import HomePage from '../HomePage';
 
 class MainLayout extends Component {
   render() {
@@ -31,7 +31,7 @@ class MainLayout extends Component {
           </nav>
           <Switch>
             <Route path="/profile" component={EditProfile}/>
-            <Route exact path="/" component={HomePage}/>
+            <Route exact path="/" component={Home}/>
           </Switch>
         </div>
       </BrowserRouter>
