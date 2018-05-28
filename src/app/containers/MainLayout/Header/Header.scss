@@ -1,10 +1,4 @@
-$header_bg_color: #1F2534;
-$header_text_color: #7A8291;
-$header_text_active_color: #fff;
-$header_padding: 20px;
-$header_font_size: 30px;
-$header_line_height: 30px;
-$header_height: $header_font_size + $header_padding * 2;
+@import '@/scss/variables.scss';
 
 .navbar {
   &.navbar-fixed {
@@ -36,8 +30,8 @@ $header_height: $header_font_size + $header_padding * 2;
             position: absolute;
             width: 0;
             height: 1px;
-            left: 20px;
-            bottom: 25px;
+            left: $header_padding;
+            bottom: $header_padding + 5px;
             display: block;
             background: #fff;
             transition: width 0.4s cubic-bezier(0.1, 0.88, 0.25, 1);

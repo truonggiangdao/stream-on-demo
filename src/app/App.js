@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import './App.scss';
+// import './App.scss';
 import Login from './containers/Login';
 import MainLayout from './containers/MainLayout';
 
