@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import EditProfile from './EditProfile';
+import ProfileForm from './ProfileForm';
 
-it('EditProfile Component renders without crashing', () => {
+it('ProfileForm Component renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<EditProfile />, div);
+  ReactDOM.render(<ProfileForm />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

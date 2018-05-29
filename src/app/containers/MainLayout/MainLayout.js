@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Header from './Header';
 import Home from '../Home';
-import EditProfile from '../EditProfile';
+import Profile from '../Profile';
 import './MainLayout.scss';
 
 class MainLayout extends Component {
@@ -11,7 +11,7 @@ class MainLayout extends Component {
       <div className="header-fixed">
         <Header/>
         <div>
-          <Route path={`${this.props.match.path}profile`} component={EditProfile}/>
+          <Route path={`${this.props.match.path}profile`} component={Profile}/>
           <Route exact path={this.props.match.path} component={Home}/>
         </div>
       </div>

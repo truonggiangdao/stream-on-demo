@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PageTitle from '@/components/PageTitle';
+import ProfileForm from './ProfileForm';
 // import api, {END_POINT_KEYS, parseAPIUrl} from '@/api';
 
-class EditProfile extends Component {
+class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,12 +29,12 @@ class EditProfile extends Component {
     return (
       <div>
         <PageTitle title="Profile"/>
-        <div className="container">
-          Edit Profile Page
+        <div className="profile-container">
+          <ProfileForm user={this.state.user} />
         </div>
       </div>
     );
   }
 };
 
-export default EditProfile;
+export default Profile;
