@@ -28,7 +28,8 @@ class InputField extends Component {
           type={this.props.type}
           name={this.props.name}
           placeholder={this.props.label || ''}
-          onKeyUp={(evt) => this.onChange(evt)} />
+          onKeyUp={(evt) => this.onChange(evt)}
+          onBlur={(evt) => this.onChange(evt)} />
       </div>
     );
   }
