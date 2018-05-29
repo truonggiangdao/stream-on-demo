@@ -1,5 +1,9 @@
 @import '@/scss/variables.scss';
 
+$input_text_height: 20px;
+$input_padding: 10px;
+$input_height: $input_text_height + $input_padding * 2;
+
 .group-input-field {
   margin: 2.2rem 0;
 
@@ -18,12 +22,14 @@
 
   .input-field {
     width: 100%;
+    height: $input_height;
+    padding: $input_padding;
+    line-height: $input_text_height;
     font-size: 1.7rem;
     border: 1px solid $color_grey;
     border-radius: 3px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
-    padding: 7px;
     outline: none;
 
     &:focus {
@@ -48,7 +54,6 @@
 
     .input-field {
       font-size: 1.5rem;
-      padding: 2px;
     }
 
   }
