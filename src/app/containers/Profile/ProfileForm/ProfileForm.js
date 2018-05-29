@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ProfilePicture from '@/components/ProfilePicture';
 import './ProfileForm.scss';
-import InputField from '@/components/InputField';
+// import InputField from '@/components/InputField';
 import Button from '@/components/Button';
 
 class ProfileForm extends Component {
