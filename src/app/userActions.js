@@ -1,18 +1,20 @@
-const setName = (name) => {
+export const setName = (name) => {
   return {
     type: "SET_NAME",
     payload: name
   };
 };
 
-const setAge = (age) => {
+export const setAge = (age) => {
   return {
     type: "SET_AGE",
     payload: age
   };
 };
 
-export default {
-  setName,
-  setAge
+export const loginRequest = (email, password) => {
+  return {
+    type: "LOGIN_REQUEST",
+    payload: {email, password}
+  };
 };
