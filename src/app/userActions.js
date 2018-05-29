@@ -1,13 +1,18 @@
-export function setName(name) {
+const setName = (name) => {
   return {
     type: "SET_NAME",
     payload: name
   };
-}
+};
 
-export function setAge(age) {
+const setAge = (age) => {
   return {
     type: "SET_AGE",
     payload: age
   };
-}
+};
+
+export default {
+  setName,
+  setAge
+};
