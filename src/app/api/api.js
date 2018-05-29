@@ -43,8 +43,10 @@ export {
 
 export const parseAPIUrl = URL_GETTER.get;
 
+const API_URL = 'https://api-stg.bliink.io';
+
 export default axios.create({
-  baseURL: `https://api-stg.bliink.io/v1/`,
+  baseURL: `${API_URL}/v1/`,
   headers: {
     post: {
       'content-type': 'application/x-www-form-urlencoded'
