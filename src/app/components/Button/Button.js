@@ -2,9 +2,12 @@ import React from 'react';
 import './Button.scss';
 
 const Button = (props) => (
-  <div className="">
-    <button className="button" name={props.name} text={props.text} onClick={props.handleClickEvent}>{props.text}</button>
-  </div>
+  <button
+    className={`button ${props.primary ? 'button-primary' : ''} ${props.block ? 'button-block' : ''}`}
+    text={props.text || 'Button'}
+    onClick={() => props.handleClickEvent}>
+    {props.text || 'Button'}
+  </button>
 );
 
 export default Button;

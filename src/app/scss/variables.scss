@@ -1,7 +1,11 @@
 $color_white: #FFFFFF;
 $color_red: #F44336;
 $color_grey: #C2C2C2;
-$color_grey_dark: darken($color_grey, 35%);
+$color_grey_dark: darken($color_grey, 5%);
+$color_grey_darker: darken($color_grey, 10%);
+$color_grey_light: lighten($color_grey, 5%);
+$color_grey_lighter: lighten($color_grey, 10%);
+$color_dark: darken($color_grey, 35%);
 $color_red_accent: #FF5454;
 $color_red_accent_lighter: lighten($color_red_accent, 10%);
 $color_red_accent_light: lighten($color_red_accent, 5%);
