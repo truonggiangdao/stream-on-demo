@@ -11,3 +11,10 @@ export function setAge(age) {
     payload: age
   };
 }
+
+export function loginRequest(email, password) {
+  return {
+    type: "LOGIN_REQUEST",
+    payload: {email, password}
+  };
+}
