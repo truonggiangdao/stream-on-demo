@@ -29,7 +29,7 @@ class Profile extends Component {
     return (
       <div>
         <PageTitle title="Profile"/>
-        <div className="profile-container">
+        <div className="layout-container profile-container">
           <ProfileForm user={this.state.user} />
         </div>
       </div>
