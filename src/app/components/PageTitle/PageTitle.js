@@ -1,5 +1,4 @@
 import React from 'react';
-import '@/scss/variables.scss';
 import './PageTitle.scss';
 
 const PageTitle = (props) => (
