@@ -1,0 +1,55 @@
+@import '@/scss/variables.scss';
+
+.group-input-field {
+  margin: 2.2rem 0;
+
+  .input-field-label {
+    display: block;
+    margin: 0 0 1rem 0;
+    font-size: 1.8rem;
+
+    .input-field-required {
+      font-weight: 700;
+      font-size: 2rem;
+      padding: 0 0.2rem;
+      color: $color_red_accent;
+    }
+  }
+
+  .input-field {
+    width: 100%;
+    font-size: 1.7rem;
+    border: 1px solid $color_grey;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    padding: 7px;
+    outline: none;
+
+    &:focus {
+      border: 1px solid $color_grey_dark;
+    }
+  }
+}
+
+@media (max-height: 40rem) {
+  .group-input-field {
+    margin: 0.8rem 0;
+
+    .input-field-label {
+      margin: 0;
+      font-size: 1.2rem;
+
+      .input-field-required {
+        font-size: 1.5rem;
+        padding: 0 0.2rem;
+      }
+    }
+
+    .input-field {
+      font-size: 1.5rem;
+      padding: 2px;
+    }
+
+  }
+}

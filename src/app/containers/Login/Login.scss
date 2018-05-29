@@ -1,0 +1,64 @@
+@import '@/scss/variables.scss';
+
+.logo {
+  margin-bottom: 2rem;
+  text-align: center;
+
+  .blink-logo {
+    font-size: 3rem;
+    font-family: cursive;
+  }
+}
+
+.container-login {
+  position: relative;
+  height: 100vh;
+  background-color: $login_bg_main;
+  margin: auto;
+
+  .wrapper-login{
+    position: absolute;
+    width: 100%;
+    max-width: 500px;
+    left: 50%;
+    top: 50%;
+    padding: 2rem;
+    transform: translate(-50%, -50%);
+    .form-login-wrapper {
+      height: auto;
+      background-color: $color_white;
+      box-shadow: 0 0 7.5rem 0 rgba(0, 0, 0, 0.2);
+      border-radius: 0.5rem;
+      padding: 2rem;
+
+      .title-login {
+        font-size: 3.6rem;
+        color: rgb(24, 27, 39);
+        text-align: center;
+        display: block;
+      }
+
+      .link-forgot-password {
+        margin-bottom: 1.8rem;
+      }
+    }
+  }
+
+  @media (max-height: 400px) {
+    .wrapper-login{
+      padding: 1rem;
+
+      .form-login-wrapper {
+        padding: 1rem;
+
+        .title-login {
+          font-size: 3rem;
+        }
+
+        .link-forgot-password {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

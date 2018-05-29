@@ -48,7 +48,28 @@ const userReducer = (state = {
     return state;
 };
 
+const loginReducer = (state = {
+    email: "admin@gmail.com",
+    password: "123456"
+}, action) => {
+    switch (action.type) {
+        case "LOGIN_REQUEST":
+            return {
+              ...state,
+            };
+
+        case "LOGIN_RESPONSE":
+            return {
+              ...state,
+            };
+
+        default:
+            return state;
+    }
+};
+
 export default combineReducers({
     math: mathReducer,
-    user: userReducer
+    user: userReducer,
+    login: loginReducer,
 });

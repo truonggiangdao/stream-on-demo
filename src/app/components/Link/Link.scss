@@ -1,0 +1,15 @@
+@import '@/scss/variables.scss';
+
+a {
+  &.link-text {
+    font-size: 1.8rem;
+    text-decoration: underline;
+    color: $color_text_input;
+    font-family: $primary_font_family;
+
+    &:hover {
+      color: $color_red_accent;
+      cursor: pointer;
+    }
+  }
+}

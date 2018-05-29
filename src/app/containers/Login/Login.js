@@ -1,49 +1,68 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { reduxForm } from "redux-form";
-import style from './style.scss';
-import validate from './validate';
+// import validator from 'validator';
+
+import './Login.scss';
+import InputField from '@/components/InputField';
+import Button from '@/components/Button';
+import Link from '@/components/Link';
+
 import { loginRequest } from '../../userActions';
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      submit: false
     }
   }
 
-  handleSubmit() {
-    return true;
+  validateRules = {
+    email: {
+      type: 'email'
+    },
+    password: {
+      type: 'password',
+      minLen: 5,
+      maxLen: 20
+    },
+  };
+
+  validateLogin() {
+    return false;
+  }
+
+  handleLogin() {
+    if (this.validateLogin()) {
+      //
+    }
+    return;
   }
   render() {
     return (
-      <div className="wrapper-login">
-        <div className="login">
+      <div className="container-login">
+        <div className="wrapper-login">
           <div className="logo">
             <strong className="blink-logo">Bliink</strong>
           </div>
-          <div className="form-wrapper">
-            <div className="container">
-              <span className="title-login">Sign In</span>
-              {/*<form onSubmit={this.handleSunmit.bind(this)}>*/}
-              <form>
-                <div className="form-group">
-                  <label><span>Email<span className="required">*</span></span>
-                  </label>
-                  <input type="text" className="input-field clear" name=""/>
-                </div>
-                <div className="form-group">
-                  <label><span>Password <span className="required">*</span></span>
-                  </label>
-                  <input type="password" className="input-field clear" name="field2"/>
-                </div>
-
-                <div className="form-group">
-                  <button type="submit" className="btn-login">Sign In</button>
-                  <p className="link-forgot-password">Forgot password?</p>
-                </div>
-              </form>
+          <div className="form-login-wrapper">
+            <span className="title-login">Sign In</span>
+            <InputField
+              type="email"
+              name="email"
+              label="Email"
+              required
+              rules={this.validateRules.email}
+            />
+            <InputField
+              type="password"
+              name="password"
+              label="Password"
+              required
+              rulels={this.validateRules.password}
+            />
+            <Button name="login" text="SIGN IN" handleClickEvent={() => this.handleLogin()}/>
+            <div className="text-center link-forgot-password">
+              <Link text="Forgot password?"/>
             </div>
           </div>
         </div>
