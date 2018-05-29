@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import ProfilePicture from '@/components/ProfilePicture';
 import './ProfileForm.scss';
-// import InputField from '@/components/InputField';
+import InputField from '@/components/InputField';
 import Button from '@/components/Button';
 
 class ProfileForm extends Component {
+  validateRules = {
+    firstName: {},
+    lastName: {},
+    email: {},
+  };
+
   handleClick() {
     return;
+  }
+
+  handleFieldChange(value) {
+    console.log(value);
   }
 
   render() {
@@ -19,13 +29,34 @@ class ProfileForm extends Component {
         </div>
 
         <div className="row padding-lg-top">
-          <div className="col-xs-6"></div>
-          <div className="col-xs-6"></div>
+          <div className="col-xs-6">
+            <InputField
+              type="firstName"
+              name="firstName"
+              label="First Name"
+              rules={this.validateRules.firstName}
+              onChange={(x, y) => this.handleFieldChange(y)}
+            />
+          </div>
+          <div className="col-xs-6">
+            <InputField
+              type="lastName"
+              name="lastName"
+              label="Last Name"
+              rules={this.validateRules.lastName}
+            />
+          </div>
         </div>
 
         <div className="row padding-lg-top">
-          <div className="col-xs-6"></div>
-          <div className="col-xs-6"></div>
+          <div className="col-xs-12">
+            <InputField
+              type="email"
+              name="email"
+              label="Email"
+              rules={this.validateRules.email}
+            />
+          </div>
         </div>
 
         <div className="row padding-lg-top">
