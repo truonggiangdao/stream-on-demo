@@ -1,1 +1,11 @@
 @import '@/scss/variables.scss';
+@import '@/scss/spacing.scss';
+
+$container-width: 600px;
+
+.layout-container {
+  width: 100%;
+  max-width: $container-width;
+  margin: auto;
+  padding: 0 20px;
+}

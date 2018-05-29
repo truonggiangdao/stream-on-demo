@@ -1,0 +1,36 @@
+$list_attributes: padding margin;
+$list_positions: top bottom left right;
+$list_sizes: xs sm md lg xl;
+$base_size: 5px;
+
+@each $attribute in $list_attributes {
+  .no-#{$attribute} {
+    @each $position in $list_positions {
+      #{$attribute}-#{$position}: 0;
+    }
+  }
+
+  @each $position in $list_positions {
+    .no-#{$attribute}-#{$position} {
+      #{$attribute}-#{$position}: 0;
+    }
+  }
+
+  $current_index: 0;
+  @each $size in $list_sizes {
+    $current_index: $current_index + 1;
+    $current_size: $current_index * $base_size;
+
+    .#{$attribute}-#{$size} {
+      @each $position in $list_positions {
+        #{$attribute}-#{$position}: $current_size;
+      }
+    }
+
+    @each $position in $list_positions {
+      .#{$attribute}-#{$position}-#{$size} {
+        #{$attribute}-#{$position}: $current_size;
+      }
+    }
+  }
+}
