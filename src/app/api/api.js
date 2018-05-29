@@ -1,17 +1,16 @@
 import axios from 'axios';
 
-export default axios.create({
-  baseURL: `https://api-stg.bliink.io/v1/`
-});
+const END_POINT_KEYS = {
+  AUTH: 'AUTH',
+  USER_PROFILE: 'USER_PROFILE',
+};
 
 const END_POINTS = {
   AUTH: 'user/auth',
-  UPDATE_PROFILE: 'users/{id}',
+  USER_PROFILE: 'users/{id}',
 };
 
-export { END_POINTS };
-
-export const URL_GETTER = {
+const URL_GETTER = {
   /**
    * Get api endPoint with params
    * @param {String} endPoint
@@ -36,3 +35,19 @@ export const URL_GETTER = {
     return null;
   }
 };
+
+export {
+  END_POINTS,
+  END_POINT_KEYS
+};
+
+export const parseAPIUrl = URL_GETTER.get;
+
+export default axios.create({
+  baseURL: `https://api-stg.bliink.io/v1/`,
+  headers: {
+    post: {
+      'content-type': 'application/x-www-form-urlencoded'
+    }
+  }
+});

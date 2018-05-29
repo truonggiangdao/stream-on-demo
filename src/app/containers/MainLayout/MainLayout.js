@@ -1,40 +1,20 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import Header from './Header';
 import Home from '../Home';
 import EditProfile from '../EditProfile';
+import './MainLayout.scss';
 
 class MainLayout extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <div className="header-fixed">
+        <Header/>
         <div>
-          <nav className="navbar navbar-default">
-            <div className="container-fluid">
-              <div className="navbar-header">
-                <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                  <span className="sr-only">Toggle navigation</span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                </button>
-                <a className="navbar-brand" href="/">Brand</a>
-              </div>
-
-              <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul className="nav navbar-nav navbar-right">
-                  <li><Link to="/">Home</Link></li>
-                  <li><Link to="/profile">Profile</Link></li>
-                  <li><Link to="/login">Login</Link></li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-          <Switch>
-            <Route path="/profile" component={EditProfile}/>
-            <Route exact path="/" component={Home}/>
-          </Switch>
+          <Route path={`${this.props.match.path}profile`} component={EditProfile}/>
+          <Route exact path={this.props.match.path} component={Home}/>
         </div>
-      </BrowserRouter>
+      </div>
     );
   }
 };

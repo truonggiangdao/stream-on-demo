@@ -1,0 +1,67 @@
+@import '@/scss/variables.scss';
+
+.navbar {
+  &.navbar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &.navbar-default {
+    margin-bottom: 0;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+
+    .navbar-nav {
+      &> li {
+        &> a {
+          color: $header_text_color;
+          text-shadow: none;
+          font-weight: 400;
+          text-transform: uppercase;
+          padding: $header_padding;
+          line-height: $header_line_height;
+          position: relative;
+
+          &:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            left: $header_padding;
+            bottom: $header_padding + 5px;
+            display: block;
+            background: #fff;
+            transition: width 0.4s cubic-bezier(0.1, 0.88, 0.25, 1);
+          }
+
+          &.active, &:hover {
+            color: $header_text_active_color;
+
+            &:after {
+              width: calc(#{100%} - #{$header_padding * 2});
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.navbar-dark {
+    background: $header_bg_color;
+  }
+
+  .navbar-header {
+    font-weight: 700;
+
+    .navbar-brand {
+      color: $header_text_active_color;
+      padding: $header_padding;
+      line-height: $header_line_height;
+      font-size: $header_font_size;
+      height: $header_height;
+    }
+  }
+}

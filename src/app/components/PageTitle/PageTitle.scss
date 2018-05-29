@@ -1,0 +1,11 @@
+@import '@/scss/variables.scss';
+
+.page-header-title {
+  color: #fff;
+  background: $header_bg_color;
+
+  h1 {
+    margin: 24px 0 30px;
+    font-weight: 600;
+  }
+}
