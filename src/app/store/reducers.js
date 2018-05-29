@@ -49,8 +49,8 @@ const userReducer = (state = {
 };
 
 const loginReducer = (state = {
-    email: "admin@gmail.com",
-    password: "123456"
+    email: '',
+    password: ''
 }, action) => {
     switch (action.type) {
         case "LOGIN_REQUEST":
