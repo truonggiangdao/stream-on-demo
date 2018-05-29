@@ -28,7 +28,7 @@ $base_size: 5px;
     }
 
     @each $position in $list_positions {
-      .#{$attribute}-#{$position}-#{$size} {
+      .#{$attribute}-#{$size}-#{$position} {
         #{$attribute}-#{$position}: $current_size;
       }
     }
