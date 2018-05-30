@@ -9,7 +9,7 @@ class Profile extends Component {
       <div>
         <PageTitle title="Profile"/>
         <div className="layout-container profile-container">
-          { this.props.user.email && (
+          { this.props.user.id && (
             <ProfileForm user={this.props.user} />
           )}
         </div>

@@ -31,19 +31,18 @@ const userReducer = (state = {
   return state;
 };
 
-const loginReducer = (state = {
-  email: '',
-  password: ''
-}, action) => {
+const loginReducer = (state = {error: ''}, action) => {
   switch (action.type) {
-    case 'LOGIN_REQUEST':
+    case 'LOGIN_SET_ERROR':
       return {
         ...state,
+        error: 'Login failed',
       };
 
-    case 'LOGIN_RESPONSE':
+    case 'LOGIN_CLEAR_ERROR':
       return {
         ...state,
+        error: '',
       };
 
     default:
