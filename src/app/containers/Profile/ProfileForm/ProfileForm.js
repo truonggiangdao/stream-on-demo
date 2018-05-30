@@ -3,7 +3,7 @@ import ProfilePicture from '@/components/ProfilePicture';
 import './ProfileForm.scss';
 import InputField from '@/components/InputField';
 import Button from '@/components/Button';
-import INPUT_FIELDS from '@/helpers/validator/fields.const';
+import {INPUT_FIELDS} from '@/helpers/validator';
 
 class ProfileForm extends Component {
   constructor(props) {
@@ -19,7 +19,25 @@ class ProfileForm extends Component {
   }
 
   handleFieldChange(field, value) {
-    console.log(field, value);
+    let fieldKey;
+    switch (field) {
+      case INPUT_FIELDS.FIRST_NAME:
+        fieldKey = 'firstName';
+        break;
+
+      case INPUT_FIELDS.LAST_NAME:
+        fieldKey = 'lastName';
+        break;
+    
+      default:
+        fieldKey = 'email';
+        break;
+    }
+    console.log(fieldKey, value);
+    const user = { ...this.state.user };
+    user[fieldKey] = value;
+    this.setState({user});
+    console.log(this.state.user);
   }
 
   componentDidMount() {
@@ -27,6 +45,7 @@ class ProfileForm extends Component {
   }
 
   render() {
+    const {user} = this.state;
     return (
       <div className="profile-form padding-lg">
         <div className="row padding-lg-top">
@@ -41,6 +60,7 @@ class ProfileForm extends Component {
               type="firstName"
               name="firstName"
               label={INPUT_FIELDS.FIRST_NAME}
+              value={user.firstName}
               onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.FIRST_NAME, val)}
             />
           </div>
@@ -49,6 +69,7 @@ class ProfileForm extends Component {
               type="lastName"
               name="lastName"
               label={INPUT_FIELDS.LAST_NAME}
+              value={user.lastName}
               onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.LAST_NAME, val)}
             />
           </div>
@@ -60,6 +81,7 @@ class ProfileForm extends Component {
               type="email"
               name="email"
               label={INPUT_FIELDS.EMAIL}
+              value={user.email}
               onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.EMAIL, val)}
             />
           </div>

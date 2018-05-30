@@ -7,7 +7,7 @@ import InputField from '@/components/InputField';
 import Button from '@/components/Button';
 import Link from '@/components/Link';
 
-import { loginRequest } from '../../userActions';
+import { loginRequest } from '@/store/userActions';
 
 class Login extends Component {
   constructor(props) {

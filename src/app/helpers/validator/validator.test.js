@@ -1,5 +1,4 @@
-import validator from '../validator';
-import INPUT_FIELDS from './fields.const';
+import validator, {INPUT_FIELDS} from '../validator';
 
 it('Validate field errors', () => {
   const result = validator.validate('abc', INPUT_FIELDS.EMAIL);

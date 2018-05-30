@@ -111,6 +111,11 @@ const validatePassword = value => {
   return validateStringLength(value, 6, 15);
 };
 
+export {
+  INPUT_FIELDS,
+  MESSAGES,
+};
+
 const validationHelper = {
   validate,
   validateEmail,
