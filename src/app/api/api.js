@@ -1,14 +1,5 @@
 import axios from 'axios';
-
-const END_POINT_KEYS = {
-  AUTH: 'AUTH',
-  USER_PROFILE: 'USER_PROFILE',
-};
-
-const END_POINTS = {
-  AUTH: 'user/auth',
-  USER_PROFILE: 'users/{id}',
-};
+import {END_POINT_KEYS, END_POINTS} from './endPoints';
 
 const URL_GETTER = {
   /**
@@ -43,10 +34,11 @@ export {
 
 export const parseAPIUrl = URL_GETTER.get;
 
-const API_URL = 'https://api-stg.bliink.io';
+// const API_URL = 'https://api-stg.bliink.io';
+const API_URL = 'http://192.168.2.86';
 
 export default axios.create({
-  baseURL: `${API_URL}/v1/`,
+  baseURL: `${API_URL}/rest/v1/`,
   headers: {
     post: {
       'content-type': 'application/x-www-form-urlencoded'
