@@ -38,6 +38,10 @@
         display: block;
       }
 
+      .btn-login {
+        margin: 2rem 0;
+      }
+
       .link-forgot-password {
         margin-bottom: 1.8rem;
       }
@@ -58,6 +62,10 @@
         .link-forgot-password {
           margin-bottom: 0;
         }
+      }
+
+      .btn-login {
+        margin: 1rem 0;
       }
     }
   }

@@ -1,33 +1,65 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import validator from 'validator';
 
 import './Login.scss';
 import InputField from '@/components/InputField';
 import Button from '@/components/Button';
 import Link from '@/components/Link';
-
+import validator from '@/helpers/validator';
+import INPUT_FIELDS from '@/helpers/validator/fields.const';
 import { loginRequest } from '@/store/userActions';
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      email: '',
+      password: '',
+      errors: {
+        email: '',
+        password: ''
+      },
     }
   }
 
-  validateRules = {
-    email: {
-      type: 'email'
-    },
-    password: {
-      type: 'password',
-      minLen: 5,
-      maxLen: 20
-    },
+  validateEmail = (value) => {
+    const result = validator.validateEmail(value);
+    if (!result.valid) {
+      this.setState({errors: { email: result.errors[0] }});
+      return false;
+    }
+    this.setState({errors: { email: '' }});
+    return true;
+  };
+
+  validatePassword = (value) => {
+    const result = validator.validatePassword(value);
+    if (!result.valid) {
+      this.setState({errors: { password: result.errors[0] }});
+      return false;
+    }
+    this.setState({errors: { password: '' }});
+    return true;
+  };
+
+  handleFieldChange = (field, value) => {
+    switch (field) {
+      case INPUT_FIELDS.EMAIL:
+        this.validateEmail(value);
+        break;
+      case INPUT_FIELDS.PASSWORD:
+        this.validatePassword(value);
+        break;
+      default:
+        break;
+    }
   };
 
   validateLogin() {
+    if (this.validateEmail(this.state.email) && this.state.validatePassword(this.state.password)) {
+      // call API check errors server
+      // true =>
+    }
     return false;
   }
 
@@ -51,16 +83,22 @@ class Login extends Component {
               name="email"
               label="Email"
               required
-              rules={this.validateRules.email}
+              onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.EMAIL, val)}
+              errors={this.state.errors.email}
             />
+
             <InputField
               type="password"
               name="password"
               label="Password"
               required
-              rulels={this.validateRules.password}
+              onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.PASSWORD, val)}
+              errors={this.state.errors.password}
             />
-            <Button name="login" text="SIGN IN" handleClickEvent={() => this.handleLogin()}/>
+            <div>{this.state.password}</div>
+            <div className="btn-login">
+              <Button primary block name="login" text="SIGN IN" handleClickEvent={() => this.handleLogin()}/>
+            </div>
             <div className="text-center link-forgot-password">
               <Link text="Forgot password?"/>
             </div>
@@ -81,9 +119,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
-// const Linked = connect(mapStateToProps, mapDispatchToProps)(Login);
-//
-// export default reduxForm({
-//   form: "loginForm",
-//   validate,
-// })(Linked);
