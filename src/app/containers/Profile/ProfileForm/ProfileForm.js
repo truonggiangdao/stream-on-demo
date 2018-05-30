@@ -3,20 +3,27 @@ import ProfilePicture from '@/components/ProfilePicture';
 import './ProfileForm.scss';
 import InputField from '@/components/InputField';
 import Button from '@/components/Button';
+import INPUT_FIELDS from '@/helpers/validator/fields.const';
 
 class ProfileForm extends Component {
-  validateRules = {
-    firstName: {},
-    lastName: {},
-    email: {},
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {
+        ...props.user,
+      },
+    };
+  }
   handleClick() {
     return;
   }
 
-  handleFieldChange(value) {
-    console.log(value);
+  handleFieldChange(field, value) {
+    console.log(field, value);
+  }
+
+  componentDidMount() {
+    console.log(this.state.user);
   }
 
   render() {
@@ -33,17 +40,16 @@ class ProfileForm extends Component {
             <InputField
               type="firstName"
               name="firstName"
-              label="First Name"
-              rules={this.validateRules.firstName}
-              onChange={(x, y) => this.handleFieldChange(y)}
+              label={INPUT_FIELDS.FIRST_NAME}
+              onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.FIRST_NAME, val)}
             />
           </div>
           <div className="col-xs-6">
             <InputField
               type="lastName"
               name="lastName"
-              label="Last Name"
-              rules={this.validateRules.lastName}
+              label={INPUT_FIELDS.LAST_NAME}
+              onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.LAST_NAME, val)}
             />
           </div>
         </div>
@@ -53,8 +59,8 @@ class ProfileForm extends Component {
             <InputField
               type="email"
               name="email"
-              label="Email"
-              rules={this.validateRules.email}
+              label={INPUT_FIELDS.EMAIL}
+              onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.EMAIL, val)}
             />
           </div>
         </div>
