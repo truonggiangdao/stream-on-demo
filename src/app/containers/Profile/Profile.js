@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PageTitle from '@/components/PageTitle';
 import ProfileForm from './ProfileForm';
+import './Profile.scss';
 
 class Profile extends Component {
   render() {
