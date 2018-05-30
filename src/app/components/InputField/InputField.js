@@ -14,6 +14,7 @@ class InputField extends Component {
   }
 
   render() {
+    const { errors } = this.props;
     return (
       <div className="group-input-field">
         <label className="input-field-label" htmlFor={this.props.name} onClick={() => this.inputEl.current.focus()}>
@@ -29,10 +30,12 @@ class InputField extends Component {
           name={this.props.name}
           placeholder={this.props.label || ''}
           onKeyUp={(evt) => this.onChange(evt)}
-          onBlur={(evt) => this.onChange(evt)} />
+          onBlur={(evt) => this.onChange(evt)}
+          value={this.props.value} />
+        <div className="error" >{errors}</div>
       </div>
-    );
+    )
   }
-};
+}
 
 export default InputField;
