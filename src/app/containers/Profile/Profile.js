@@ -9,7 +9,9 @@ class Profile extends Component {
       <div>
         <PageTitle title="Profile"/>
         <div className="layout-container profile-container">
-          <ProfileForm user={this.props.user} />
+          { this.props.user.email && (
+            <ProfileForm user={this.props.user} />
+          )}
         </div>
       </div>
     );

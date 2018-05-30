@@ -1,16 +1,26 @@
 import { combineReducers } from 'redux';
 
 const userReducer = (state = {
-  firstName: 'Sample',
-  lastName: 'User',
-  email: 'sample_user@gmail.com'
+  id: '',
+  token: '',
+  firstName: '',
+  lastName: '',
+  email: ''
 }, action) => {
   switch (action.type) {
+    case 'UPDATE_TOKEN':
+      state = {
+        ...state,
+        token: action.payload,
+      };
+      break;
+
     case 'UPDATE_PROFILE':
       state = {
         ...state,
-        firstName: action.payload.firstName,
-        lastName: action.payload.lastName,
+        id: action.payload.id,
+        firstName: action.payload.first_name,
+        lastName: action.payload.last_name,
         email: action.payload.email,
       };
       break;
