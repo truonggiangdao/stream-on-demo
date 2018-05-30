@@ -1,9 +1,9 @@
-import rest, {parseAPIUrl, END_POINT_KEYS} from '@/api';
+import userRestService from '@/api/userRest';
 
 export const retrieveCurrentUser = (dispatch) => {
   const token = localStorage.getItem('token');
   if (token) {
-    rest.get(parseAPIUrl(END_POINT_KEYS.AUTH))
+    userRestService.getLoginUserByToken()
     .then(res => {
       dispatch(updateProfile(res.data));
     })
@@ -29,10 +29,7 @@ export const updateProfile = (profile) => {
 };
 
 export const login = (dispatch, payload) => {
-  const loginParams = new URLSearchParams();
-  loginParams.append('email', payload.email);
-  loginParams.append('password', payload.password);
-  return rest.post(parseAPIUrl(END_POINT_KEYS.AUTH), loginParams)
+  return userRestService.login(payload.email, payload.password)
   .then(res => {
     dispatch(updateToken(res.data.auth_token));
     dispatch(updateProfile(res.data));
