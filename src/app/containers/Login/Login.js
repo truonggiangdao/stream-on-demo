@@ -5,14 +5,14 @@ import './Login.scss';
 import InputField from '@/components/InputField';
 import Button from '@/components/Button';
 import Link from '@/components/Link';
-import validator from '@/helpers/validator';
-import INPUT_FIELDS from '@/helpers/validator/fields.const';
-import { loginRequest } from '@/store/userActions';
+import validator, {INPUT_FIELDS} from '@/helpers/validator';
+import { login } from '@/store/userActions';
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: false,
       email: '',
       password: '',
       errors: {
@@ -25,20 +25,44 @@ class Login extends Component {
   validateEmail = (value) => {
     const result = validator.validateEmail(value);
     if (!result.valid) {
-      this.setState({errors: { email: result.errors[0] }});
+      this.setState({
+        email: value,
+        errors: {
+          ...this.state.errors,
+          email: result.errors[0]
+        }
+      });
       return false;
     }
-    this.setState({errors: { email: '' }});
+    this.setState({
+      email: value,
+      errors: {
+        ...this.state.errors,
+        email: ''
+      }
+    });
     return true;
   };
 
   validatePassword = (value) => {
     const result = validator.validatePassword(value);
     if (!result.valid) {
-      this.setState({errors: { password: result.errors[0] }});
+      this.setState({
+        password: value,
+        errors: {
+          ...this.state.errors,
+          password: result.errors[0]
+        }
+      });
       return false;
     }
-    this.setState({errors: { password: '' }});
+    this.setState({
+      password: value,
+      errors: {
+        ...this.state.errors,
+        password: ''
+      }
+    });
     return true;
   };
 
@@ -56,19 +80,26 @@ class Login extends Component {
   };
 
   validateLogin() {
-    if (this.validateEmail(this.state.email) && this.state.validatePassword(this.state.password)) {
-      // call API check errors server
-      // true =>
-    }
-    return false;
+    return this.validateEmail(this.state.email)
+      && this.validatePassword(this.state.password);
   }
 
   handleLogin() {
     if (this.validateLogin()) {
-      //
+      this.setState({loading: true});
+      this.props.processloginRequest(
+        this.state.email,
+        this.state.password
+      )
+      .then(() => {
+        this.props.history.push('/profile');
+      })
+      .finally(() => {
+        this.setState({loading: false});
+      });
     }
-    return;
   }
+
   render() {
     return (
       <div className="container-login">
@@ -95,9 +126,18 @@ class Login extends Component {
               onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.PASSWORD, val)}
               errors={this.state.errors.password}
             />
-            <div>{this.state.password}</div>
+            {
+              this.state.loading && (
+                <p className="text-info">Loading...</p>
+              )
+            }
+            {
+              this.props.error && (
+                <p className="text-danger">{this.props.error}</p>
+              )
+            }
             <div className="btn-login">
-              <Button primary block name="login" text="SIGN IN" handleClickEvent={() => this.handleLogin()}/>
+              <Button primary block name="login" text="SIGN IN" onClick={() => this.handleLogin()}/>
             </div>
             <div className="text-center link-forgot-password">
               <Link text="Forgot password?"/>
@@ -109,12 +149,17 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => state;
+const mapStateToProps = state => {
+  return {
+    error: state.login.error,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    loginRequest: (email, password) => {
-      dispatch(loginRequest(email, password));
-    }
+    processloginRequest: (email, password) => {
+      return login(dispatch, {email, password});
+    },
   };
 };
 

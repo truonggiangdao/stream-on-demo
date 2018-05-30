@@ -3,7 +3,8 @@ import rest, {parseAPIUrl, END_POINT_KEYS} from '@/api';
 export const retrieveCurrentUser = (dispatch) => {
   const token = localStorage.getItem('token');
   if (token) {
-    rest.get(parseAPIUrl(END_POINT_KEYS.AUTH)).then(res => {
+    rest.get(parseAPIUrl(END_POINT_KEYS.AUTH))
+    .then(res => {
       dispatch(updateProfile(res.data));
     })
     .catch(() => {
@@ -28,27 +29,21 @@ export const updateProfile = (profile) => {
 };
 
 export const login = (dispatch, payload) => {
-  return rest.post(parseAPIUrl(END_POINT_KEYS.AUTH), {
-    email: payload.email,
-    password: payload.password,
-  })
+  const loginParams = new URLSearchParams();
+  loginParams.append('email', payload.email);
+  loginParams.append('password', payload.password);
+  return rest.post(parseAPIUrl(END_POINT_KEYS.AUTH), loginParams)
   .then(res => {
     dispatch(updateToken(res.data.auth_token));
     dispatch(updateProfile(res.data));
     dispatch(loginResponse('LOGIN_CLEAR_ERROR'));
   })
-  .catch(() => {
+  .catch(err => {
     dispatch(loginResponse('LOGIN_SET_ERROR'));
+    throw err;
   });
 };
 
 export const loginResponse = type => { 
   return { type };
-};
-
-export const loginRequest = (email, password) => {
-  return {
-    type: 'LOGIN_REQUEST',
-    payload: {email, password}
-  };
 };
