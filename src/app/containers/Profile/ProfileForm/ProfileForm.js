@@ -3,7 +3,7 @@ import ProfilePicture from '@/components/ProfilePicture';
 import './ProfileForm.scss';
 import InputField from '@/components/InputField';
 import Button from '@/components/Button';
-import {INPUT_FIELDS} from '@/helpers/validator';
+import validator, {INPUT_FIELDS} from '@/helpers/validator';
 
 class ProfileForm extends Component {
   constructor(props) {
@@ -12,8 +12,38 @@ class ProfileForm extends Component {
       user: {
         ...props.user,
       },
+      errors: {
+        firstName: '',
+        lastName: '',
+      }
     };
   }
+
+  validateName = (field, value) => {
+    let name = {};
+    const result = validator.validateName(value);
+
+    name[field] = value;
+    if(field === 'firstName') {
+      name.errors = {
+        ...this.state.errors,
+        firstName: result.errors[0]
+      }
+    } else {
+      name.errors = {
+        ...this.state.errors,
+        lastName: result.errors[0]
+      }
+    }
+
+    if (!result.valid) {
+      this.setState(name);
+      return false;
+    }
+    this.setState(name);
+    return true;
+  };
+
   handleClick() {
     return;
   }
@@ -30,14 +60,14 @@ class ProfileForm extends Component {
         break;
     
       default:
-        fieldKey = 'email';
+        fieldKey = '';
         break;
     }
-    console.log(fieldKey, value);
+
+    this.validateName(fieldKey, value);
     const user = { ...this.state.user };
     user[fieldKey] = value;
     this.setState({user});
-    console.log(this.state.user);
   }
 
   componentDidMount() {
@@ -57,20 +87,22 @@ class ProfileForm extends Component {
         <div className="row padding-lg-top">
           <div className="col-xs-6">
             <InputField
-              type="firstName"
+              type="text"
               name="firstName"
               label={INPUT_FIELDS.FIRST_NAME}
               value={user.firstName}
               onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.FIRST_NAME, val)}
+              errors={this.state.errors.firstName}
             />
           </div>
           <div className="col-xs-6">
             <InputField
-              type="lastName"
+              type="text"
               name="lastName"
               label={INPUT_FIELDS.LAST_NAME}
               value={user.lastName}
               onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.LAST_NAME, val)}
+              errors={this.state.errors.lastName}
             />
           </div>
         </div>
@@ -83,6 +115,7 @@ class ProfileForm extends Component {
               label={INPUT_FIELDS.EMAIL}
               value={user.email}
               onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.EMAIL, val)}
+              readOnly = {true}
             />
           </div>
         </div>

@@ -111,6 +111,16 @@ const validatePassword = value => {
   return validateStringLength(value, 6, 15);
 };
 
+const validateName = value => {
+  if (validateRequired(value)) {
+    return validateRequired(value);
+  }
+  if (validateString(value)) {
+    return validateString(value);
+  }
+  return validateStringLength(value, 2, 15);
+};
+
 export {
   INPUT_FIELDS,
   MESSAGES,
@@ -120,6 +130,7 @@ const validationHelper = {
   validate,
   validateEmail,
   validatePassword,
+  validateName,
 };
 
 export default validationHelper;

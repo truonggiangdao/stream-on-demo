@@ -31,7 +31,9 @@ class InputField extends Component {
           placeholder={this.props.label || ''}
           onKeyUp={(evt) => this.onChange(evt)}
           onBlur={(evt) => this.onChange(evt)}
-          defaultValue={this.props.value} />
+          defaultValue={this.props.value}
+          readOnly={this.props.readOnly}
+        />
         <div className="error" >{errors}</div>
       </div>
     )
