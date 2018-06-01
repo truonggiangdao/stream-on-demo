@@ -59,6 +59,7 @@
   },
   "devDependencies": {
     "node-sass": "^4.9.0",
+    "plop": "^2.0.0",
     "sass-loader": "^7.0.1"
   },
   "jest": {
