@@ -2,26 +2,26 @@ import state from './sampleCode';
 
 // npm run test sampleCode
 describe('sampleCode', () => {
-  it('sampleCode:Check state.firstName', () => {
+  it('Check state.firstName correct', () => {
     expect(state.firstName).toMatch('Vi Ha');
   });
 
-  it('sampleCode:Check state.lastName', () => {
+  it('Check state.lastName correct', () => {
     expect(state.lastName).toMatch('Ha');
   });
 
-  it('sampleCode:Check state.errors', () => {
+  it('Check state.errors is object', () => {
     expect(state.errors).toMatchObject({
       firstName: expect.any(String),
       lastName: expect.any(String),
     });
   });
 
-  it('sampleCode:Check state.errors.firstName', () => {
+  it('Check state.errors.firstName correct', () => {
     expect(state.errors.firstName).toMatch('ERROR');
   });
 
-  it('sampleCode:Check state.errors.lastName', () => {
+  it('Check state.errors.lastName correct', () => {
     expect(state.errors.lastName).toMatch('');
   });
 });
