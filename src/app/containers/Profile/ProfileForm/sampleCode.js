@@ -13,6 +13,5 @@ const setState = (object) => {
 };
 
 setState({ firstName: 'Vi Ha', errors: { firstName: 'ERROR' } });
-console.log(state);
 
 export default state;
